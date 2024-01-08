@@ -14,7 +14,10 @@ namespace App_Project_Calories.Data
         public FoodDatabase(string dbPath) 
         { 
             _database = new SQLiteAsyncConnection(dbPath); 
-            _database.CreateTableAsync<Food>().Wait(); }
+            _database.CreateTableAsync<Food>().Wait();
+            _database.CreateTableAsync<Categorie>().Wait();
+            _database.CreateTableAsync<Meal>().Wait();
+        }
         public Task<List<Food>> GetFoodAsync() 
         { 
             return _database.Table<Food>().ToListAsync(); 
@@ -33,10 +36,44 @@ namespace App_Project_Calories.Data
             { 
                 return _database.InsertAsync(slist); 
             } 
+
         }
         public Task<int> DeleteFoodAsync(Food slist) 
         { 
             return _database.DeleteAsync(slist); 
+        }
+
+        public Task<List<Categorie>> GetCategoriesAsync() 
+        { 
+            return _database.Table<Categorie>().ToListAsync(); 
+        }
+        public Task<int> SaveCategorieAsync(Categorie categorie) 
+        { 
+            if (categorie.ID != 0) 
+            { 
+                return _database.UpdateAsync(categorie); 
+            } 
+            else 
+            { 
+                return _database.InsertAsync(categorie); 
+            } 
+        }
+
+
+        public Task<List<Meal>> GetMealsAsync() 
+        { 
+            return _database.Table<Meal>().ToListAsync(); 
+        }
+        public Task<int> SaveMealAsync(Meal meal) 
+        { 
+            if (meal.ID != 0) 
+            { 
+                return _database.UpdateAsync(meal); 
+            } 
+            else 
+            { 
+                return _database.InsertAsync(meal); 
+            } 
         }
     }
 }

@@ -9,10 +9,14 @@
     <TabBar>
         <ShellContent Title="Calorie Calculator"
                   ContentTemplate="{DataTemplate local:MainPage}" />
-        <ShellContent Title="About"
-                  ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="My Food Lists"             
-                  ContentTemplate="{DataTemplate local:FoodEntryPage }"/>
+        <ShellContent Title="Food"             
+                  ContentTemplate="{DataTemplate local:FoodEntryPage}"/>
+        <ShellContent Title="Categories"              
+                  ContentTemplate="{DataTemplate local:CategorieEntryPage}"/>
+        <ShellContent Title="Meals"              
+                  ContentTemplate="{DataTemplate local:MealEntryPage}"               />
+        <ShellContent Title="About"             
+                  ContentTemplate="{DataTemplate local:AboutPage}"/>
     </TabBar>
 
 </Shell>
