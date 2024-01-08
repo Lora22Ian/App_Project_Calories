@@ -7,12 +7,17 @@
         <ToolbarItem Text="Add Food" Clicked="OnFoodAddedClicked" />
     </ContentPage.ToolbarItems>
 
-    <ListView x:Name="listView" Margin="20" ItemSelected="OnFoodViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}" Detail="{Binding Calories}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <!-- Existing ListView -->
+        <ListView x:Name="listView" Margin="20" ItemSelected="OnFoodViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Calories} " />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
+        <!-- Label for displaying selected category -->
+        <Label x:Name="selectedCategoryLabel" Text="" Margin="20" />
+    </StackLayout>
 </ContentPage>

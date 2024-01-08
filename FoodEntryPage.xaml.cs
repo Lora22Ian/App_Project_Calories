@@ -27,6 +27,9 @@ public partial class FoodEntryPage : ContentPage
     {
         if (e.SelectedItem != null)
         {
+            var selectedFood = e.SelectedItem as Food;
+
+            // Update the label with the selected category
             await Navigation.PushAsync(new FoodPage
             {
                 BindingContext = e.SelectedItem as Food

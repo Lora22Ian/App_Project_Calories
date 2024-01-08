@@ -19,5 +19,6 @@ namespace App_Project_Calories.Models
 
         [ForeignKey(typeof(Categorie))] 
         public int CategorieID { get; set; }
+
     }
 }

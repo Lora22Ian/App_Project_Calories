@@ -9,8 +9,14 @@
             HeightRequest="100" />
         <Entry Placeholder="Enter the calories"
                Keyboard="Numeric"
-               TextChanged="OnCaloriesEntryTextChanged" />
-        <Picker x:Name="CategoryPicker" Title="Select Category" SelectedItem="{Binding CategorieID}"/>
+               Text="{Binding Calories}" />
+        <Picker x:Name="CategoryPicker"
+                Title="Select Category"
+                SelectedItem="{Binding CategorieID}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedIndexChanged="OnCategorySelectedIndexChanged"/>
+
+
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
