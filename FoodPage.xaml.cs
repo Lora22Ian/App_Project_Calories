@@ -7,8 +7,6 @@ public partial class FoodPage : ContentPage
 {
     private List<Categorie> categories; // Add a field to store categories
 
-    private Categorie selectedCategory;
-
     public FoodPage()
     {
         InitializeComponent();

@@ -1,3 +1,5 @@
+using App_Project_Calories.Data;
+using App_Project_Calories.ViewModels;
 using App_Project_Calories.Models;
 
 namespace App_Project_Calories;
@@ -6,13 +8,19 @@ public partial class FoodEntryPage : ContentPage
 {
 	public FoodEntryPage()
 	{
-		InitializeComponent();
+        InitializeComponent();
 	}
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        listView.ItemsSource = await App.Database.GetFoodAsync();
+        var categories = await App.Database.GetCategoriesAsync();
+        var foods = await App.Database.GetFoodAsync();
+        foreach (var food in foods)
+        { 
+            food.CategorieName = categories.Find(categorie => categorie.ID == food.CategorieID)?.Name ?? "Missing";
+        }
+        listView.ItemsSource = foods;
     }
 
     async void OnFoodAddedClicked(object sender, EventArgs e)
@@ -27,8 +35,6 @@ public partial class FoodEntryPage : ContentPage
     {
         if (e.SelectedItem != null)
         {
-            var selectedFood = e.SelectedItem as Food;
-
             // Update the label with the selected category
             await Navigation.PushAsync(new FoodPage
             {

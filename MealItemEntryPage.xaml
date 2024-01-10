@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App_Project_Calories.FoodEntryPage"
-             Title="FoodEntryPage">
+             x:Class="App_Project_Calories.MealItemEntryPage"
+             Title="MealItemEntryPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Food" Clicked="OnFoodAddedClicked" />
+        <ToolbarItem Text="Add Meal Item" Clicked="OnMealItemAddedClicked" />
     </ContentPage.ToolbarItems>
 
     <StackLayout>
         <!-- Existing ListView -->
-        <ListView x:Name="listView" Margin="20" ItemSelected="OnFoodViewItemSelected">
+        <ListView x:Name="listView" Margin="20" ItemSelected="OnMealItemViewItemSelected">
             <ListView.Header>
                 <Grid BackgroundColor="#C6E4D5">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="220" />
+                        <ColumnDefinition Width="220" />
                         <ColumnDefinition Width="200" />
-                        <ColumnDefinition Width="220" />
-                        <ColumnDefinition Width="220" />
                     </Grid.ColumnDefinitions>
-                    <Label Text="Name" FontAttributes="Bold" Grid.Column="0" />
-                    <Label Text="Category" FontAttributes="Bold" Grid.Column="1" />
-                    <Label Text="Calories" FontAttributes="Bold" Grid.Column="2" />
+                    <Label Text="Food Name" FontAttributes="Bold" Grid.Column="0" />
+                    <Label Text="Meal Name" FontAttributes="Bold" Grid.Column="1" />
+                    <Label Text="Quantity" FontAttributes="Bold" Grid.Column="2" />
+                    <Label Text="Date" FontAttributes="Bold" Grid.Column="3" />
                 </Grid>
             </ListView.Header>
             <ListView.ItemTemplate>
@@ -27,17 +29,19 @@
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="220" />
                                 <ColumnDefinition Width="200" />
-                                <ColumnDefinition Width="220" />
-                                <ColumnDefinition Width="220" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" Grid.Column="0" />
+                            <Label Text="{Binding FoodName}" FontAttributes="Bold" Grid.Column="0" />
                             <FlexLayout HorizontalOptions="FillAndExpand" Grid.Column="1">
-                                <Label Text="{Binding CategorieName}" FlexLayout.Grow="1" FontAttributes="Italic" />
+                                <Label Text="{Binding MealName}" FlexLayout.Grow="1" FontAttributes="Italic" />
                             </FlexLayout>
                             <FlexLayout HorizontalOptions="FillAndExpand" Grid.Column="2">
-                                <Label Text="{Binding Calories}" FlexLayout.Grow="1" FontAttributes="Italic" />
+                                <Label Text="{Binding Quantity}" FlexLayout.Grow="1" FontAttributes="Italic" />
                             </FlexLayout>
+                            <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" FontAttributes="Italic" Grid.Column="3" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

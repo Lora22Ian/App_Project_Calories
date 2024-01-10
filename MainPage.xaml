@@ -1,12 +1,49 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App_Project_Calories"
              x:Class="App_Project_Calories.MainPage">
+
+    <ContentPage.Resources>
+        <StyleSheet>
+            <![CDATA[
+                .welcome-message {
+                    font-size: 32;
+                    text-align: center;
+                    color: #2196F3;
+                }
+
+                .subtitle {
+                    font-size: 18;
+                    text-align: center;
+                    color: #666;
+                }
+
+                .date-selector {
+                    margin-top: 20;
+                    margin-bottom: 20;
+                }
+
+                .total-calories-label {
+                    font-size: 18;
+                    text-align: center;
+                    color: #4CAF50;
+                    margin-top: 20;
+                }
+
+                .meal-calories-layout {
+                    spacing: 5;
+                    margin-top: 10;
+                    margin-bottom: 20;
+                }
+            ]]>
+        </StyleSheet>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout
             Spacing="10"
-            Padding="0"
+            Padding="20"
             VerticalOptions="Center">
 
             <Image
@@ -17,25 +54,30 @@
 
             <Label
                 Text="Welcome to Calorie Calculator App!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                StyleClass="welcome-message" />
 
             <Label
                 Text="Start your healthy journey with our calorie calculator."
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Calculate and track your daily calorie intake."
-                FontSize="18"
-                HorizontalOptions="Center" />
+                StyleClass="subtitle" />
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Go to Calorie Calculator"
-                SemanticProperties.Hint="Navigate to the Calorie Calculator"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <DatePicker x:Name="DateSelector"
+                        Format="D"
+                        DateSelected="OnDateSelected"
+                        HorizontalOptions="Center"
+                        StyleClass="date-selector" />
 
-       </VerticalStackLayout>
+            <Label x:Name="TotalCaloriesLabel"
+                   Text="Total Calories: "
+                   StyleClass="total-calories-label" />
+
+            <StackLayout x:Name="MealCaloriesLayout"
+                         Spacing="5"
+                         HorizontalOptions="Center"
+                         StyleClass="meal-calories-layout">
+                <!-- Meal calories will be dynamically added here -->
+            </StackLayout>
+
+        </VerticalStackLayout>
     </ScrollView>
 
 </ContentPage>

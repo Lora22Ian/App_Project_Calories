@@ -3,17 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_Project_Calories.MealEntryPage"
              Title="MealEntryPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Meal"                      
-                     Clicked="OnMealAddedClicked" />
-    </ContentPage.ToolbarItems>
-    <ListView x:Name="listView"               
-              Margin="20"               
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Name}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    <StackLayout>
+        <!-- Existing ListView -->
+        <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
+            <ListView.Header>
+                <Grid BackgroundColor="#C6E4D5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Meal" FontAttributes="Bold" Grid.Column="1" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <FlexLayout HorizontalOptions="FillAndExpand" Grid.Column="1">
+                                <Label Text="{Binding Name}" FlexLayout.Grow="1" FontAttributes="Italic" />
+                            </FlexLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
 </ContentPage>
