@@ -12,7 +12,6 @@
                Text="{Binding Calories}" />
         <Picker x:Name="CategoryPicker"
                 Title="Select Category"
-                SelectedItem="{Binding CategorieID}"
                 ItemDisplayBinding="{Binding Name}"
                 SelectedIndexChanged="OnCategorySelectedIndexChanged"/>
 

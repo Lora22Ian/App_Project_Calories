@@ -20,5 +20,11 @@ namespace App_Project_Calories.Models
         [ForeignKey(typeof(Categorie))] 
         public int CategorieID { get; set; }
 
+        [Ignore] // Ignore this property for the database
+        public string CategorieName { get; set; }
+
+        [OneToMany]
+        public List<MealItem> MealItem { get; set; }
+
     }
 }

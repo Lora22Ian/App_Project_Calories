@@ -17,6 +17,7 @@ namespace App_Project_Calories.Data
             _database.CreateTableAsync<Food>().Wait();
             _database.CreateTableAsync<Categorie>().Wait();
             _database.CreateTableAsync<Meal>().Wait();
+            _database.CreateTableAsync<MealItem>().Wait();
         }
         public Task<List<Food>> GetFoodAsync() 
         { 
@@ -75,5 +76,55 @@ namespace App_Project_Calories.Data
                 return _database.InsertAsync(meal); 
             } 
         }
+
+        //MealItem
+        public Task<List<MealItem>> GetMealItemAsync()
+        {
+            return _database.Table<MealItem>().ToListAsync();
+        }
+        public Task<MealItem> GetMealItemAsync(int id)
+        {
+            return _database.Table<MealItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+        public Task<int> SaveMealItemAsync(MealItem mealItem)
+        {
+            if (mealItem.ID != 0)
+            {
+                return _database.UpdateAsync(mealItem);
+            }
+            else
+            {
+                return _database.InsertAsync(mealItem);
+            }
+        }
+
+        public Task<int> DeleteMealItemAsync(MealItem mealItem)
+        {
+            return _database.DeleteAsync(mealItem);
+        }
+
+
+        public Task<List<Food>> GetFoodIdAsync()
+        {
+            return _database.Table<Food>().ToListAsync();
+        }
+        public Task<int> SaveFoodIdAsync(Food food)
+        {
+            if (food.ID != 0)
+            {
+                return _database.UpdateAsync(food);
+            }
+            else
+            {
+                return _database.InsertAsync(food);
+            }
+        }
+
+        public Task<string> GetFoodNameAsync(int foodId)
+        {
+            return _database.Table<Food>().Where(f => f.ID == foodId).FirstOrDefaultAsync().ContinueWith(task => task.Result?.Name);
+        }
+
+
     }
 }
