@@ -10,7 +10,7 @@
                 .welcome-message {
                     font-size: 32;
                     text-align: center;
-                    color: #2196F3;
+                    color: #4CAF50;
                 }
 
                 .subtitle {
@@ -35,6 +35,23 @@
                     spacing: 5;
                     margin-top: 10;
                     margin-bottom: 20;
+                }
+
+                .meal-item {
+                    background-color: #f2f2f2;
+                    padding: 10;
+                    border-radius: 10;
+                    margin: 5;
+                }
+
+                .meal-label {
+                    font-size: 16;
+                    color: #333;
+                }
+
+                .meal-calories {
+                    font-size: 14;
+                    color: #777;
                 }
             ]]>
         </StyleSheet>

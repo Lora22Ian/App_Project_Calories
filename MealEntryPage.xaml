@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_Project_Calories.MealEntryPage"
              Title="MealEntryPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Meal" Clicked="OnMealAddedClicked" />
+    </ContentPage.ToolbarItems>
     <StackLayout>
         <!-- Existing ListView -->
         <ListView x:Name="listView" Margin="20" ItemSelected="OnListViewItemSelected">
