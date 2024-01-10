@@ -77,6 +77,11 @@ namespace App_Project_Calories.Data
             } 
         }
 
+        public Task<int> DeleteMealAsync(Meal slist)
+        {
+            return _database.DeleteAsync(slist);
+        }
+
         //MealItem
         public Task<List<MealItem>> GetMealItemAsync()
         {
