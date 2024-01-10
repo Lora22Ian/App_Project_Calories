@@ -17,6 +17,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Text="Save Category" Grid.Column="0" MaximumWidthRequest="200" Clicked="OnSaveButtonClicked" />
+                <Button Text="Delete Category" Grid.Column="1" MaximumWidthRequest="200" Clicked="OnDeleteButtonClicked" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

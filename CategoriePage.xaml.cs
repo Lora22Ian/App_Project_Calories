@@ -15,4 +15,10 @@ public partial class CategoriePage : ContentPage
 		await App.Database.SaveCategorieAsync(categorie); 
 		await Navigation.PopAsync(); 
 	}
+    async void OnDeleteButtonClicked(object sender, EventArgs e)
+    {
+        var categorie = (Categorie)BindingContext;
+        await App.Database.DeleteCategorieAsync(categorie);
+        await Navigation.PopAsync();
+    }
 }

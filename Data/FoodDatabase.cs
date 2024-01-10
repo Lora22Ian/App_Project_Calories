@@ -59,6 +59,10 @@ namespace App_Project_Calories.Data
                 return _database.InsertAsync(categorie); 
             } 
         }
+        public Task<int> DeleteCategorieAsync(Categorie categorie)
+        {
+            return _database.DeleteAsync(categorie);
+        }
 
 
         public Task<List<Meal>> GetMealsAsync() 
